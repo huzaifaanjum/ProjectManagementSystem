@@ -29,7 +29,7 @@ export class ManageEmployeeComponent implements OnInit {
 
   resetForm(){
     this.employeeData = {
-      _id: "",
+      _id: null,
       name:"",
       email: "",
       position:"",
@@ -37,7 +37,7 @@ export class ManageEmployeeComponent implements OnInit {
       project:"",
       seat:""
     }
-    this.x= false
+    this.x= true
   }
 
   position = ['Project Manager', 'Technical Lead', 'Android Developer', 'IOS Developer', 'Angular Developer']
@@ -49,25 +49,28 @@ export class ManageEmployeeComponent implements OnInit {
   
   registerEmp(){
     if(this.x){
-      alert(this.x)
+
+      // alert("in 1 : "+this.x)
     this._as.registerEmployee(this.employeeData)
     .subscribe(
       res => console.log(res),
       err => console.log(err)    
     )
   
-    alert(JSON.stringify(this.employeeData))
+    // alert(JSON.stringify(this.employeeData))
 
   }
     else{ 
       this._as.putEmployee(this.employeeData).subscribe()
+
+        // alert("in else : "+this.x)        
         this.x = true
-        
-    // alert(JSON.stringify(this.employeeData))
+
+        // alert(JSON.stringify(this.employeeData))
 
     } 
 
-    // this.resetForm();
+    this.resetForm();
     this.refreshEmployeeList();
 
   }
@@ -76,7 +79,7 @@ export class ManageEmployeeComponent implements OnInit {
 
   onEdit(emp: Employee){
     this.employeeData = emp;
-    alert(JSON.stringify(this.employeeData))
+    // alert(JSON.stringify(this.employeeData))
     this.x = false;
   }
 
