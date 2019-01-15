@@ -1,0 +1,128 @@
+<div class="container-fluid">
+<div class="row" style="padding-top:60px; padding-bottom: 0" >
+    <div class="col-md-4" style="padding-left:0px; ">
+    <div class="main-login main-center">
+    <h2>Manage Form</h2>
+      
+    <form>    
+      <input type="hidden" name="_id" #name="ngModel" [(ngModel)]="employeeData._id">          
+        <div class="form-group">
+          <label for="name" class="cols-sm-2 control-label">Employee Name</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="name" 
+              [(ngModel)]="employeeData.name"
+              placeholder="Enter your Name"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="cols-sm-2 control-label">Employee Email</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="email"
+              [(ngModel)]="employeeData.email" 
+              placeholder="Enter your Email" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label">Employee Position</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+              
+                <select class="custom-select" position=[ngModel] name="position" style="height:45px;"
+                 [(ngModel)]="employeeData.position">
+                  <option [ngValue]="" disabled >Choose...</option>
+                  <option [ngValue]="pos" *ngFor="let pos of position" >{{pos}}</option>
+                </select>
+
+              </div>
+          </div>
+        </div>
+
+        
+
+        <div class="form-group">
+          <label for="username" class="cols-sm-2 control-label">Employee Department</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+              
+              <select class="custom-select" department=[ngModel] name="department"  style="height:45px;"
+              [(ngModel)]="employeeData.department">
+               <option [ngValue]="department" disabled >Choose...</option>
+                  <option [ngValue]="dept" *ngFor="let dept of departments" >{{dept}}</option>
+                </select>
+
+              </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirm" class="cols-sm-2 control-label">Employee Project</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="project"
+              [(ngModel)]="employeeData.project"  
+              placeholder="Enter employee current project"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirm" class="cols-sm-2 control-label">Employee seat</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" 
+                [(ngModel)]="employeeData.seat" name="seat"
+                placeholder="e.g. 2c-gf-ws284"/>
+              </div>
+            </div>
+          </div>
+
+        <div class="form-group">
+          <button (click)="registerEmp()" class="btn btn-primary" style="float:right;" >Submit</button>
+          <button (click)="resetForm()" class="btn btn-primary" >Reset</button> 
+        </div>
+        
+      </form>
+    </div>
+</div>
+<div class="col-md-8 mt-2">
+
+  <table class="table table-dark table-borderless"  style="border-radius:3px; text-align: center">
+        <tr>
+            <th scope="col" >Name </th>
+            <th scope="col">Email </th>
+            <th>Position </th>
+            <th>Department </th>
+            <th>Project </th>
+            <th>Seat </th>
+            <th></th>                
+          </tr>
+    <tr *ngFor="let emp of retrivedData">
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.email }}</td>
+      <td>{{ emp.position }}</td>
+      <td>{{ emp.department }}</td>
+      <td>{{ emp.project }}</td>
+      <td>{{ emp.seat }}</td>
+      <td> <button class="ed" (click)="onEdit(emp)" > <i class="material-icons" style="color: rgb(86, 218, 223)"> edit </i> </button> &nbsp;
+        <button class="ed" (click)="onDelete(emp._id, empForm)" > <i class="material-icons" style="color:rgb(86, 218, 223)"> delete </i> </button>  </td>
+    </tr>
+  </table>
+  
+
+
+</div>
+</div>
+
+</div>

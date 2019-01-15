@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color:black" >
+        <h3 class="navbar-brand"> {{title}} </h3>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+        
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/manage-employee" routerLinkActive="active">Manage</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/report" routerLinkActive="active">Report</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <a routerLink="/register" routerLinkActive="active" *ngIf="!_as.loggedIn()" >
+            <button class="btn " 
+            style="border-radius:3px; border-color:white; background-color: black; color:white" type="submit">Register</button></a>
+
+            &nbsp;&nbsp;
+            <a routerLink="/login" routerLinkActive="active" *ngIf="!_as.loggedIn()" >
+            <button class="btn " 
+            style="border-radius:3px; border-color:white; background-color: black; color:white" type="submit">Login</button>
+            </a>
+
+            
+            &nbsp;&nbsp;
+            <a *ngIf="_as.loggedIn()" (click)="_as.logout()"  >
+            <button class="btn " 
+            style="border-radius:3px; border-color:white; background-color: black; color:white" 
+            type="submit">Logout</button>
+            </a>
+          </form>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>

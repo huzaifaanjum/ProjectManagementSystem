@@ -1,0 +1,97 @@
+/* DashboardComponent's private CSS styles */
+[class*='col-'] {
+    float: left;
+    padding-right: 20px;
+    padding-bottom: 20px;
+  }
+  [class*='col-']:last-of-type {
+    padding-right: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  *, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  h2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 0;
+  }
+  h4 {
+    position: relative;
+    padding-top: 55px;
+    padding-bottom: 5px;
+  }
+  h3 {
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+  .grid {
+    margin: 0;
+  }
+  .module {
+    padding: 20px;
+    text-align: center;
+    color: #eee;
+    min-width: 120px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px;
+    filter: brightness(150%)
+  }
+  .module:hover {
+    filter: brightness(180%)
+  }
+  .grid-pad {
+    padding: 10px 0;
+  }
+  .grid-pad > [class*='col-']:last-of-type {
+    padding-right: 20px;
+  }
+  @media (max-width: 600px) {
+    .module {
+      font-size: 10px;
+       }
+      
+  }
+  @media (max-width: 1024px) {
+    .grid {
+      margin: 0;
+    }
+    .module {
+      min-width: 60px;
+    }
+  }
+
+
+  /* Styles for wrapping the search box */
+
+.main {
+  width: 50%;
+  margin: 50px auto;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+
+
