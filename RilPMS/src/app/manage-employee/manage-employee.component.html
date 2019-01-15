@@ -36,9 +36,9 @@
             <div class="input-group">
               <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-user fa" aria-hidden="true"></i></span>
               
-                <select class="custom-select" position=[ngModel] name="position" style="height:45px;"
+                <select class="custom-select" name="position" style="height:45px;"
                  [(ngModel)]="employeeData.position">
-                  <option [ngValue]="" disabled >Choose...</option>
+                  <option [value]="employeeData.position" disabled >Choose...</option>
                   <option [ngValue]="pos" *ngFor="let pos of position" >{{pos}}</option>
                 </select>
 
@@ -54,9 +54,9 @@
             <div class="input-group">
               <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-users fa" aria-hidden="true"></i></span>
               
-              <select class="custom-select" department=[ngModel] name="department"  style="height:45px;"
+              <select class="custom-select" name="department"  style="height:45px;"
               [(ngModel)]="employeeData.department">
-               <option [ngValue]="department" disabled >Choose...</option>
+               <option [value]="employeeData.department" disabled >Choose...</option>
                   <option [ngValue]="dept" *ngFor="let dept of departments" >{{dept}}</option>
                 </select>
 

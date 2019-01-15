@@ -33,7 +33,7 @@ export class ManageEmployeeComponent implements OnInit {
       name:"",
       email: "",
       position:"",
-      department:"",
+      department:" ",
       project:"",
       seat:""
     }
