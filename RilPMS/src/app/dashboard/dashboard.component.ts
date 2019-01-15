@@ -4,6 +4,7 @@ import { HTTP_INTERCEPTORS, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router'
 import { Employee } from '../manage-employee/employee';
 import { DetailsComponent } from '../details/details.component'
+import { Project } from '../project/project';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,7 @@ export class DashboardComponent implements OnInit {
   employee = []
   topEmployees = []
   topProjects: any[];
+  project: any[];
   constructor(private _as: AuthService, private _router: Router) { }
 
   ngOnInit() {
@@ -33,6 +35,8 @@ export class DashboardComponent implements OnInit {
  this.refreshEmployeeList();
 
 
+ this.refreshProjectList();
+
  }
 
 
@@ -48,9 +52,30 @@ export class DashboardComponent implements OnInit {
   });  
 }
 
+refreshProjectList(){
+  this._as.getProjectList().subscribe((res)=>{
+    this.retrivedData = res as Project[];
+    this.project = this.retrivedData;
+    this.topProjects = this.retrivedData.slice(0,4)
+     
+    // alert(JSON.stringify(this.retrivedData)) 
+    // alert(JSON.stringify(this.topProjects)) 
+
+  });  
+}
+
+
 selectedEmployee(_id){
   // alert(_id)
   this._router.navigate(['/details'+`/${_id}`])
-  
 }
+
+
+
+
+selectedProject(_id){
+  // alert(_id)
+  this._router.navigate(['/project-details'+`/${_id}`])
+}
+
 }

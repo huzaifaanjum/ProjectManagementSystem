@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { DetailsComponent } from './details/details.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { ProjectComponent } from './project/project.component';
 
 const routes: Routes = [
   {path:"", redirectTo:'/home', pathMatch:'full'},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'register', component: RegistrationComponent},
   {path: 'dashboard', component: DashboardComponent , canActivate : [AuthGuard]},
   {path: 'details/:_id', component: DetailsComponent, canActivate : [AuthGuard]},
+  {path: 'project', component: ProjectComponent, canActivate : [AuthGuard]},
   {path: 'project-details/:_id', component: ProjectDetailsComponent, canActivate : [AuthGuard]},
   {path: 'report', component: ReportComponent, canActivate : [AuthGuard]},
   {path: 'manage-employee', component:ManageEmployeeComponent, canActivate : [AuthGuard]},

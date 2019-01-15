@@ -16,6 +16,7 @@ import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { DetailsComponent } from './details/details.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
     NotfoundComponent,
     HomeComponent,
     DetailsComponent,
-    ProjectDetailsComponent
+    ProjectDetailsComponent,
+    ProjectComponent,
   ],
   imports: [
     BrowserModule,

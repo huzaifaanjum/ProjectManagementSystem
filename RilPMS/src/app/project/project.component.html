@@ -1,0 +1,128 @@
+<div class="container-fluid">
+  <div class="row" style="padding-top:60px; padding-bottom: 0" >
+      <div class="col-md-4" style="padding-left:0px; ">
+      <div class="main-login main-center">
+      <h2>Project Form</h2>
+        
+      <form>    
+        
+        
+        <input type="hidden" name="_id" #name="ngModel" [(ngModel)]="projectData._id">          
+
+
+        <div class="form-group">
+          <label class="cols-sm-2 control-label">Project Name</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="name"
+              [(ngModel)]="projectData.name" required />
+            </div>
+          </div>
+        </div>
+  
+          <div class="form-group">
+            <label for="email" class="cols-sm-2 control-label">Project Description</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="description"
+                [(ngModel)]="projectData.description" required />
+              </div>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Project Owner</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                
+                
+                <input type="text" class="form-control" name="owner"
+                [(ngModel)]="projectData.owner"  
+
+                />
+  
+                </div>
+            </div>
+          </div>
+  
+          
+  
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">Start Date</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                
+                <input type="date" class="form-control" name="startDate"
+                [(ngModel)]="projectData.startDate"/>
+                
+                </div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="username" class="cols-sm-2 control-label">End Date</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                
+                <input type="date" class="form-control" name="endDate"
+                [(ngModel)]="projectData.endDate" />
+                
+                </div>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="confirm" class="cols-sm-2 control-label">Project Manager</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" name="project"
+                [(ngModel)]="projectData.manager" />
+              </div>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <button (click)="registerPro()" class="btn btn-primary" style="float:right;" >Submit</button>
+            <button (click)="resetForm()" class="btn btn-primary" >Reset</button> 
+          </div>
+          
+        </form>
+      </div>
+  </div>
+  <div class="col-md-8 mt-2" style="padding:0px" >
+  
+    <table class="table table-dark table-borderless"  style="border-radius:3px; text-align: center; width: 100%;">
+          <tr>
+              <th scope="col">Name </th>
+              <th scope="col">Description </th>
+              <th scope="col">Owner </th>
+              <th scope="col">Start Date </th>
+              <th scope="col">End Date </th>
+              <th scope="col">Manager </th>
+              <th scope="col"></th>                
+            </tr>
+      <tr *ngFor="let pro of retrivedProjectData">
+        <td>{{ pro.name }}</td>
+        <td>{{ pro.description }}</td>
+        <td>{{ pro.owner }}</td>
+        <td>{{ pro.startDate }}</td>
+        <td>{{ pro.endDate }}</td>
+        <td>{{ pro.manager }}</td>
+        <td> <button class="ed" (click)="onEdit(pro)" > <i class="material-icons" style="color: rgb(86, 218, 223)"> edit </i> </button> &nbsp;
+          <button class="ed" (click)="onDelete(pro._id)" > <i class="material-icons" style="color:rgb(86, 218, 223)"> delete </i> </button>  </td>
+      </tr>
+    </table>
+    
+  
+  
+  </div>
+  </div>
+  
+  </div>

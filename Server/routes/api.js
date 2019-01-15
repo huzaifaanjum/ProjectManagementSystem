@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 const Employee = require('../models/employee') 
+const Project = require('../models/project') 
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 const db = "mongodb://userhuzaifa:pwdhuz1@ds253104.mlab.com:53104/eventdb"
@@ -113,6 +114,11 @@ router.get('/registeredEmployee', (req, res) => {
 });
 
 
+
+
+// employee end
+
+
 router.post('/login', (req, res)=>{
     userData = req.body
 
@@ -139,5 +145,71 @@ router.get('/dashboard', verifyToken, (req,res)=>{
     let events = [{"id" : "1" , "name" : "a"}, {"id" : "2", "name": "b" }]
 res.json(events)
 })
+
+
+// auth end
+
+
+
+router.post('/registerProject', (req, res) => {
+    let projectData = req.body;
+    let project = new Project(projectData)
+    project.save((error, registeredProject) => {
+        if(error){
+            console.log(error);
+        }else{
+            res.status(200).send(registeredProject)
+        }
+    })
+})
+
+
+router.put('/registeredProject/:id', (req,res) => {
+    let projectData = req.body
+    Project.findByIdAndUpdate(req.params.id, {$set: projectData}, {new : true}, (err, docs) => {
+        if(!err){ res.send(docs);}
+        else { console.log('error in update :'+JSON.stringify(err, undefined, 2 ));}    
+    } )
+} )
+
+
+router.delete('/registeredProject/:id', (req, res) => {
+    Project.findByIdAndRemove(req.params.id, (err, docs) => {
+        if(!err){ res.send(docs);}
+        else { console.log('error in delete :'+JSON.stringify(err, undefined, 2 ));}           
+    })
+})
+
+
+
+
+router.get('/registeredProject/:id', (req, res) => {
+
+    // if(!ObjectId.isValid(req.params.id))
+    // return res.status(400).send(`no record with id : ${req.params.id}  ` )
+
+
+    Project.findById(req.params.id, (err, docs) => {
+        if(!err){ res.send(docs);}
+        else { console.log('error:'+JSON.stringify(err, undefined, 2 ));}
+    });
+});
+
+
+
+
+
+
+router.get('/registeredProject', (req, res) => {
+    Project.find((err, docs) => {
+        if(!err){ res.send(docs);}
+        else { console.log('error:'+JSON.stringify(err, undefined, 2 ));}
+    });
+});
+
+
+
+
+
 
 module.exports = router
