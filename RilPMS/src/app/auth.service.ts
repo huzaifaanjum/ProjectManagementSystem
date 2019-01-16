@@ -15,6 +15,7 @@ export class AuthService {
   private _deurl="http://localhost:3000/api/registeredEmployee";
   private _gpurl="http://localhost:3000/api/registeredProject";
   private _epurl="http://localhost:3000/api/registerProject";
+  private _peurl="http://localhost:3000/api/projectEmployees";
   
 
   constructor(private _http: HttpClient, private _router : Router) { }
@@ -66,6 +67,11 @@ getEmployeeList(){
 
 getProjectList(){
   return this._http.get(this._gpurl);
+}
+
+getProjectEmployees(pname : string){
+  let p = pname.trim()
+  return this._http.get(this._peurl+`/${p}`);
 }
 
 getEmployee(_id : string){

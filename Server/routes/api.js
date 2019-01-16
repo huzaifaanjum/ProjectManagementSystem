@@ -101,9 +101,17 @@ router.get('/registeredEmployee/:id', (req, res) => {
     });
 });
 
+router.get('/projectEmployees/:pname', (req, res) => {
+
+    // if(!ObjectId.isValid(req.params.id))
+    // return res.status(400).send(`no record with id : ${req.params.id}  ` )
 
 
-
+    Employee.find({project : req.params.pname}, (err, docs) => {
+        if(!err){ res.send();}
+        else { console.log('error:'+JSON.stringify(err, undefined, 2 ));}
+    });
+});
 
 
 router.get('/registeredEmployee', (req, res) => {

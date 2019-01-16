@@ -1,5 +1,45 @@
 <br><br><br>
 
-<p style="color:white">
-  report works!
-</p>
+<div class="container-fluid" style="color:white">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-3" *ngFor="let i of projectData" >
+          <div class="container-fluid  bg-dark p-4 mt-2" style="border-radius:3px;">
+          <img alt="Bootstrap Image Preview" src="/assets/img/reportProject.jpg" class="center" 
+          style="border-radius:5px" />
+          <br>
+          <h4 class="text-info" >
+						{{ i?.name }}
+					</h4>
+					<ul class="list-unstyled">
+						<li class="list-item">
+							Description : {{ i?.description }}
+						</li>
+						<li class="list-item">
+							Owner &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{ i?.owner }}
+						</li>
+						<li class="list-item">
+							Start Date &nbsp; &nbsp;: {{ i?.startDate }}
+						</li>
+						<li class="list-item">
+							End Date &nbsp;&nbsp;&nbsp; : {{ i?.endDate }}
+						</li>
+						<li class="list-item">
+							Manager &nbsp;&nbsp;&nbsp; : {{ i?.manager }}
+						</li>
+					</ul>
+					<!-- <h3>
+						Employees :
+					</h3> -->
+					<ul class="list-unstyled" >
+            
+
+            
+					</ul>
+				</div>
+      </div>
+			</div>
+		</div>
+	</div>
+</div>
