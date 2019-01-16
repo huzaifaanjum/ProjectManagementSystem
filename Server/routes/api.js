@@ -114,8 +114,9 @@ router.get('/projectEmployees/:pname', (req, res) => {
 });
 
 
-router.get('/registeredEmployee', (req, res) => {
-    Employee.find((err, docs) => {
+router.get('/user/registeredEmployee/:uname', (req, res) => {
+    // let z = req.params.uname
+    Employee.find({ uname : req.params.uname } ,(err, docs) => {
         if(!err){ res.send(docs);}
         else { console.log('error:'+JSON.stringify(err, undefined, 2 ));}
     });
@@ -142,7 +143,7 @@ router.post('/login', (req, res)=>{
                 }else{
                     let payload = { subject: user._id }
                     let token = jwt.sign(payload, 'secretKey')
-                    res.status(200).send({token})
+                    res.status(200).send({token : token, uname: user.name })
                 }
             }
         }
@@ -197,7 +198,7 @@ router.get('/registeredProject/:id', (req, res) => {
     // return res.status(400).send(`no record with id : ${req.params.id}  ` )
 
 
-    Project.findById(req.params.id, (err, docs) => {
+    Project.findById(req.params.id , (err, docs) => {
         if(!err){ res.send(docs);}
         else { console.log('error:'+JSON.stringify(err, undefined, 2 ));}
     });
@@ -208,8 +209,9 @@ router.get('/registeredProject/:id', (req, res) => {
 
 
 
-router.get('/registeredProject', (req, res) => {
-    Project.find((err, docs) => {
+router.get('/user/registeredProject/:uname', (req, res) => {
+    console.log(req.params.uname)
+    Project.find({uname: req.params.uname  } ,(err, docs) => {
         if(!err){ res.send(docs);}
         else { console.log('error:'+JSON.stringify(err, undefined, 2 ));}
     });

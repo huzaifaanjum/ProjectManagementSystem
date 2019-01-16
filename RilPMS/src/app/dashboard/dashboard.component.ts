@@ -11,6 +11,8 @@ import { Project } from '../project/project';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
+
 export class DashboardComponent implements OnInit {
   retrivedData = []
   employee = []
@@ -48,6 +50,8 @@ export class DashboardComponent implements OnInit {
     this.topProjects = this.topEmployees 
     // alert(JSON.stringify(this.retrivedData)) 
     // alert(JSON.stringify(this.topProjects)) 
+    
+let z = localStorage.getItem("userEmail")
 
   });  
 }

@@ -26,8 +26,11 @@ export class ManageEmployeeComponent implements OnInit {
     });
   }
 
+  
 
   resetForm(){
+    
+    const z = localStorage.getItem("uname")
     this.employeeData = {
       _id: null,
       name:"",
@@ -35,9 +38,14 @@ export class ManageEmployeeComponent implements OnInit {
       position:"",
       department:" ",
       project:"",
-      seat:""
+      seat:"",
+      uname: localStorage.getItem("uname")
+      
+      
     }
     this.x= true
+
+    
   }
 
   position = ['Project Manager', 'Technical Lead', 'Android Developer', 'IOS Developer', 'Angular Developer']

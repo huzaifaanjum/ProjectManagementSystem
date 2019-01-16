@@ -9,19 +9,28 @@ export class AuthService {
   private _url="http://localhost:3000/api/register";
   private _lurl="http://localhost:3000/api/login";
   private _surl="http://localhost:3000/api/dashboard";
-  private _eeurl="http://localhost:3000/api/registerEmployee";
-  private _geurl="http://localhost:3000/api/registeredEmployee";
-  private _ueurl="http://localhost:3000/api/registeredEmployee";
-  private _deurl="http://localhost:3000/api/registeredEmployee";
-  private _gpurl="http://localhost:3000/api/registeredProject";
-  private _epurl="http://localhost:3000/api/registerProject";
-  private _peurl="http://localhost:3000/api/projectEmployees";
-  
+  private _eeurl="http://localhost:3000/api/registerEmployee"; //registerEmployee
+
+
+  private _geurl="http://localhost:3000/api/user/registeredEmployee"; //getEmpoyeeList
+  private _gseurl="http://localhost:3000/api/registeredEmployee";  //getSingleEmployee
+  private _ueurl="http://localhost:3000/api/registeredEmployee";  //updateEmployee
+  private _deurl="http://localhost:3000/api/registeredEmployee";  //deleteEmployee
+
+
+  private _gpurl="http://localhost:3000/api/user/registeredProject"; //getProjectList
+  private _epurl="http://localhost:3000/api/registerProject";       //registerProject
+  private _upurl="http://localhost:3000/api/registeredProject";  //updateProject
+  private _dpurl="http://localhost:3000/api/registeredProject";  //deleteProject
+  private _peurl="http://localhost:3000/api/projectEmployees";   //projectEmployee
+  private _gspurl="http://localhost:3000/api/registeredProject";  //getSingleProject
+
 
   constructor(private _http: HttpClient, private _router : Router) { }
 
   logout(){
     localStorage.removeItem('token')
+    localStorage.removeItem('uname')
     this._router.navigate(['/login'])
   }
 
@@ -62,11 +71,13 @@ export class AuthService {
 // crud
 
 getEmployeeList(){
-  return this._http.get(this._geurl);
+  let p =localStorage.getItem("uname")
+  return this._http.get(this._geurl+`/${p}`);
 }
 
 getProjectList(){
-  return this._http.get(this._gpurl);
+  let p =localStorage.getItem("uname")
+  return this._http.get(this._gpurl+`/${p}`);
 }
 
 getProjectEmployees(pname : string){
@@ -75,11 +86,11 @@ getProjectEmployees(pname : string){
 }
 
 getEmployee(_id : string){
-  return this._http.get(this._geurl+`/${_id}`);
+  return this._http.get(this._gseurl+`/${_id}`);
 }
 
 getProject(_id : string){
-  return this._http.get(this._gpurl+`/${_id}`);
+  return this._http.get(this._gspurl+`/${_id}`);
 }
 
 putEmployee(emp){
@@ -87,7 +98,7 @@ putEmployee(emp){
 }
 
 putProject(project){
-  return this._http.put(this._gpurl+`/${project._id}`, project)
+  return this._http.put(this._upurl+`/${project._id}`, project)
 }
 
 
@@ -96,7 +107,7 @@ deleteEmployee(_id: string){
 }
 
 deleteProject(_id: string){
-  return this._http.delete(this._gpurl+`/${_id}`);
+  return this._http.delete(this._dpurl+`/${_id}`);
 }
 
 

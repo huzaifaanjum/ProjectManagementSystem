@@ -6,5 +6,6 @@ export class Project {
     startDate : string;
     endDate : string;
     manager : string;
-    employeeName : string;
+    uname : string;
+
 }

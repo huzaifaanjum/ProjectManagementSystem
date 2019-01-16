@@ -38,7 +38,9 @@ export class ProjectComponent implements OnInit {
     owner : " ",
     startDate : " ",
     endDate : " ",
-    manager : " "
+    manager : " ",
+    uname: localStorage.getItem("uname")
+
     }
     this.x= true
   }

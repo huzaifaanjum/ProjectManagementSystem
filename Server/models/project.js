@@ -6,7 +6,8 @@ const projectSchema = new Schema({
     owner : String,
     startDate : String,
     endDate : String,
-    manager : String
+    manager : String,
+    uname: String
 })
 
 module.exports = mongoose.model('project', projectSchema, 'projects') 

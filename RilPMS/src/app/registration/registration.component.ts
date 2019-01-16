@@ -9,7 +9,9 @@ import { Router } from '@angular/router'
 })
 export class RegistrationComponent implements OnInit {
 
-  registeredUserData = {}
+  registeredUserData = {
+    name: ""
+  }
   constructor(private _as : AuthService, private _router: Router) { }
 
   ngOnInit() {
@@ -21,6 +23,7 @@ export class RegistrationComponent implements OnInit {
       res => {
         console.log(res)
         localStorage.setItem('token', res.token)
+        localStorage.setItem('uname', this.registeredUserData.name)
         this._router.navigate(['/dashboard'])
       },
       err => console.log(err)    

@@ -6,4 +6,5 @@ export class Employee {
     department : string;
     project : string;
     seat : string;
+    uname : string;
 }
