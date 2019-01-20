@@ -8,7 +8,7 @@
           <label for="email" class="cols-sm-2 control-label">Email ID</label>
           <div class="cols-sm-10">
             <div class="input-group">
-              <span class="input-group-addon" style="width:40px; padding: 4px;"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <span class="input-group-addon" style="width:40px; padding: 4px;"><i class="fa fa-envelope fa" aria-hidden="false"></i></span>
               <input type="text" class="form-control" name="email" 
               [(ngModel)]="loginUserData.email"
               id="email"  placeholder="Enter your Email" required />
@@ -20,7 +20,7 @@
           <label for="password" class="cols-sm-2 control-label">Password</label>
           <div class="cols-sm-10">
             <div class="input-group">
-              <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <span class="input-group-addon" style="width:40px; padding: 6px;"><i class="fa fa-lock fa-lg " aria-hidden="false"></i></span>
               <input type="password" class="form-control" name="password" required 
               [(ngModel)]="loginUserData.password"
               id="password"  placeholder="Enter your Password"/>
