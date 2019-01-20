@@ -5,7 +5,7 @@ const Employee = require('../models/employee')
 const Project = require('../models/project') 
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
-const db = "mongodb://userhuzaifa:pwdhuz1@ds253104.mlab.com:53104/eventdb"
+const db = "mongodb://username:userpassword@ds253104.mlab.com:53104/eventdb"
 
 
 mongoose.connect(db, err => {
